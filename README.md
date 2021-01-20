@@ -1,2 +1,1 @@
-# fastify-graphQL-mongodb
-GraphQL Server Boilerplates for Node with fastify
+# GraphQL Server Boilerplates for Node with fastify
