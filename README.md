@@ -1,1 +1,1 @@
-# GraphQL Server Boilerplates for Node with fastify
+# Node GraphQL Server Boilerplates
