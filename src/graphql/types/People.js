@@ -27,7 +27,7 @@ module.exports = new GraphQLObjectType({
       async resolve(parent, _, { container }) {
         const filmsControllers = container.resolve('filmsControllers');
 
-        return await filmsControllers['getOne'](parent.films);
+        return await filmsControllers['getByIds'](parent.films);
       },
     },
     vehicles: {

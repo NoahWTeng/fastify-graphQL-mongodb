@@ -5,5 +5,10 @@ module.exports = function PeopleControllers({ peopleServices }) {
 
       return resp;
     },
+    getOne: async (ids) => {
+      const resp = await peopleServices.get(ids);
+
+      return resp;
+    },
   };
 };

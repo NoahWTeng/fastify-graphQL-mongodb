@@ -20,14 +20,20 @@ mongoose.Promise = global.Promise;
     console.log(`We connected database succesfully ==> ${database.url}\n`);
 
     try {
-      // await FilmsModel.create(films);
-      // console.log(`Succesfully Films created :)`.green);
-      // await PlanetsModel.create(planets);
-      // console.log(`Succesfully Planets created :)`.green);
-      // await VehiclesModel.create(vehicles);
-      // console.log(`Succesfully Vehicles created :)`.green);
-      await PeopleModel.create(people);
-      console.log(`Succesfully People created :)`.green);
+      await FilmsModel.create(films);
+      console.log(`Succesfully Films created :)`.green);
+      await PlanetsModel.create(planets);
+      console.log(`Succesfully Planets created :)`.green);
+      await VehiclesModel.create(vehicles);
+      console.log(`Succesfully Vehicles created :)`.green);
+
+      /*
+
+      To create people, you need create first films, planets, vehicles and after that pass ids to people
+
+      */
+      // await PeopleModel.create(people);
+      // console.log(`Succesfully People created :)`.green);
     } catch (err) {
       console.error('Something went bad in the process to create the database!'.red, err);
     }

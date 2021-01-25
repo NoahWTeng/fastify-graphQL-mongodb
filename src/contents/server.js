@@ -13,6 +13,11 @@ class Server {
       logger: config.logger,
     });
 
+    this.fastify.register(mercurius, {
+      schema,
+      context: (request, reply) => ({ request, reply, container }),
+    });
+
     this.fastify
       .register(require('fastify-cors'), {
         origin: '*',
@@ -23,11 +28,6 @@ class Server {
       .register(require('fastify-jwt'), config.jwt)
       .register(require('fastify-swagger'), config.swagger)
       .register(router);
-
-    this.fastify.register(mercurius, {
-      schema,
-      context: (request, reply) => ({ request, reply, container }),
-    });
 
     //Register plugins
     Object.values(plugins).forEach((plugin) => this.fastify.register(plugin));

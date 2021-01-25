@@ -14,7 +14,17 @@ class FilmsServices {
       boomify(e);
     }
   }
-  async get(ids) {
+  async get(id) {
+    try {
+      const obtained = await this.Model.findOne({ _id: id });
+
+      return obtained;
+    } catch (e) {
+      boomify(e);
+    }
+  }
+
+  async getByIds(ids) {
     try {
       const obtained = await this.Model.find({ _id: { $in: ids } });
 
@@ -23,7 +33,6 @@ class FilmsServices {
       boomify(e);
     }
   }
-
   async create(data) {
     try {
       const created = await this.Model.create(data);
@@ -43,11 +52,11 @@ class FilmsServices {
     }
   }
 
-  async update(id, data) {
+  async update({ id, ...rest }) {
     try {
       const updated = await this.Model.findOneAndUpdate(
         { _id: id },
-        { $set: objectToDotNotation({ updatedAt: Date.now(), ...data }) },
+        { $set: objectToDotNotation({ updatedAt: Date.now(), ...rest }) },
         { new: true }
       ).catch((e) => {
         throw e;
